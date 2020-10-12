@@ -11,7 +11,7 @@ import {
   Paper,
   TextField,
   Toolbar,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import { Link, Route } from "react-router-dom";
 import { auth } from "./firebase";
@@ -21,7 +21,7 @@ export function SignIn(props) {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(u => {
+    const unsubscribe = auth.onAuthStateChanged((u) => {
       if (u) {
         props.history.push("/app");
       }
@@ -35,7 +35,7 @@ export function SignIn(props) {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {})
-      .catch(error => {
+      .catch((error) => {
         alert(error.message);
       });
   };
@@ -55,7 +55,7 @@ export function SignIn(props) {
             placeholder={"Email"}
             fullWidth={true}
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
@@ -65,7 +65,7 @@ export function SignIn(props) {
             fullWidth={true}
             style={{ marginTop: "30px" }}
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
@@ -74,7 +74,7 @@ export function SignIn(props) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginTop: "30px"
+              marginTop: "30px",
             }}
           >
             <Typography>
@@ -95,7 +95,7 @@ export function SignUp(props) {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(u => {
+    const unsubscribe = auth.onAuthStateChanged((u) => {
       if (u) {
         props.history.push("/app");
       }
@@ -109,7 +109,7 @@ export function SignUp(props) {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {})
-      .catch(error => {
+      .catch((error) => {
         alert(error.message);
       });
   };
@@ -129,7 +129,7 @@ export function SignUp(props) {
             placeholder={"Email"}
             fullWidth={true}
             value={email}
-            onChange={e => {
+            onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
@@ -139,7 +139,7 @@ export function SignUp(props) {
             fullWidth={true}
             style={{ marginTop: "30px" }}
             value={password}
-            onChange={e => {
+            onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
@@ -148,7 +148,7 @@ export function SignUp(props) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              marginTop: "30px"
+              marginTop: "30px",
             }}
           >
             <Typography>
@@ -169,7 +169,7 @@ export function App(props) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(u => {
+    const unsubscribe = auth.onAuthStateChanged((u) => {
       if (u) {
         setUser(u);
       } else {
@@ -186,7 +186,7 @@ export function App(props) {
       .then(() => {
         props.history.push("/");
       })
-      .catch(error => {
+      .catch((error) => {
         alert(error.message);
       });
   };
